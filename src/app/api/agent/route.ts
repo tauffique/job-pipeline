@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import Anthropic from "@anthropic-ai/sdk";
 import { AGENT_SYSTEM } from "@/lib/prompts";
-import { Job, newJobId } from "@/lib/store";
-import { Platform } from "@/lib/store";
+import { type Job, type Platform } from "@/lib/store";
+import { newJobId } from "@/lib/utils";
 
 const client = new Anthropic();
 
@@ -111,7 +111,6 @@ async function handleWebSearch(query: string): Promise<string> {
     const results = searchResponse.content
       .map((b) => {
         if (b.type === "text") return b.text;
-        if (b.type === "tool_result") return JSON.stringify(b);
         return "";
       })
       .join("\n");
