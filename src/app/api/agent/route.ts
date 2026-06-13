@@ -210,6 +210,10 @@ function handleAddToPipeline(input: {
     cvLatexDE: null,
     clLatexEN: null,
     clLatexDE: null,
+    atsScore: null,
+    atsMatchedKeywords: [],
+    atsMissingKeywords: [],
+    atsVerdict: null,
   };
   return job;
 }
